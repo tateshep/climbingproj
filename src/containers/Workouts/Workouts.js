@@ -28,6 +28,14 @@ class Workouts extends Component {
             });
     }
 
+    deleteWorkoutHandler = (id) =>{
+        axios.delete('/workouts/' + id + '.json')
+            .then(res => {
+                console.log(res);
+            })
+        console.log('delete :' + id);
+    } 
+
 
     
     render () {
@@ -37,6 +45,7 @@ class Workouts extends Component {
                     key={workout.id}
                     title={workout.title}
                     description={workout.description}
+                    delete = {() => this.deleteWorkoutHandler(workout.id)}
                     />
             )
         })

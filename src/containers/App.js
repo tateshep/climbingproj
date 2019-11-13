@@ -4,11 +4,12 @@ import 'terminal.css';
 
 import Workouts from '../containers/Workouts/Workouts';
 import NewWorkout from './Workouts/NewWorkout/NewWorkout';
+import Navigation from '../components/UI/Navigation/Navigation';
 
 function App() {
   return (
     <div className="App">
-      <header><a>Nav1</a><a>Nav2</a><a>Nav3</a></header>
+      <Navigation />
       <Workouts />
       <NewWorkout />
 

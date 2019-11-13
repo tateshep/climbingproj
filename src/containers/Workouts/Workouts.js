@@ -36,8 +36,6 @@ class Workouts extends Component {
         console.log('delete :' + id);
     } 
 
-
-    
     render () {
         const workoutsList = this.state.workouts.map(workout => {
             return (
@@ -50,7 +48,7 @@ class Workouts extends Component {
             )
         })
         return (
-            <div>
+            <div style={{marginTop: "180px"}}>
                 { workoutsList }
             </div>
         )

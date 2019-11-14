@@ -47,7 +47,7 @@ class NewWorkout extends Component {
 
                         <div className="form-group">
                             <label htmlFor="title">Title</label>
-                            <input onChange={(event) => this.titleChangedHandler(event)} id="title" type="text" placeholder="test" />
+                            <input onChange={(event) => this.titleChangedHandler(event)} id="title" type="text" placeholder='<span className="logo terminal-prompt"></span>"'/>
                         </div>
                     
                         <div className="form-group">

@@ -3,6 +3,19 @@ import React, { Component } from 'react';
 import Workout from '../../components/Workout/Workout';
 import axios from '../../axios-workouts';
 
+
+const style = {
+
+    root: 
+        {
+        padding: '10px 10px',
+        width: '100%',
+        marginTop: '20vh',
+    },
+
+
+}
+
 class Workouts extends Component {
     state = {
         workouts: [],
@@ -48,7 +61,7 @@ class Workouts extends Component {
             )
         })
         return (
-            <div style={{marginTop: "180px"}}>
+            <div style={style.root}>
                 { workoutsList }
             </div>
         )

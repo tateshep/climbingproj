@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const style = {
     root: 
@@ -25,22 +26,20 @@ const navigation = () => {
         <div style={style.root} className="terminal-nav">
             <nav className="terminal-menu">
                 <ul style={style.flexDiv}>
-                    {/* <li>
-                        <div className="terminal-logo">
-                            <div className="logo terminal-prompt"></div>
-                        </div>
-                    </li> */}
                     <li>
-                        <a className="menu-item">New</a>
+                        <NavLink to="/" exact className="menu-item">New</NavLink>
                     </li>
                     <li>
-                        <a className="menu-item">History</a>
+                        <NavLink to="/history" className="menu-item">History</NavLink>
                     </li>
                     <li>
-                        <a className="menu-item">Goals</a>
+                        <NavLink to="/goals" className="menu-item">Goals</NavLink>
                     </li>
                     <li>
-                        <a className="menu-item">Modivation</a>
+                        <NavLink to="/modivation" className="menu-item">Modivation</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/tools" className="menu-item">Tools</NavLink>
                     </li>
                 </ul>
             </nav>

@@ -2,6 +2,18 @@ import React, { Component } from 'react';
 
 import axios from '../../../axios-workouts';
 
+const style = {
+    root: 
+    {
+    marginTop: '20vh',
+    marginLeft: '5%',
+    marginRight: '5%'
+    },
+
+
+}
+
+
 class NewWorkout extends Component {
 
     state = {
@@ -40,14 +52,14 @@ class NewWorkout extends Component {
 
     render () {
         return (
-            <>
+            <div style={style.root}>
                 <form>
                     <fieldset>
                         <legend>New Workout</legend>
 
                         <div className="form-group">
                             <label htmlFor="title">Title</label>
-                            <input onChange={(event) => this.titleChangedHandler(event)} id="title" type="text" placeholder='<span className="logo terminal-prompt"></span>"'/>
+                            <input onChange={(event) => this.titleChangedHandler(event)} id="title" type="text" placeholder='title'/>
                         </div>
                     
                         <div className="form-group">
@@ -58,7 +70,7 @@ class NewWorkout extends Component {
                     </fieldset>
                 </form>
                 <button onClick={this.submitHandler} className="btn btn-default" >Submit</button>
-            </>
+            </div>
 
         )
     }

@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
-
 import Workout from '../../components/Workout/Workout';
 import axios from '../../axios-workouts';
 
-
 const style = {
-
     root: 
         {
         padding: '10px 10px',
         width: '100%',
         marginTop: '20vh',
+        marginLeft: '5%',
+        marginRight: '5%'
     },
-
-
 }
 
 class Workouts extends Component {
@@ -32,8 +29,6 @@ class Workouts extends Component {
                         id: key,
                     });
                 }
-                // console.log(fetchedWorkouts);
-
                 this.setState({loading:false, workouts: fetchedWorkouts});
             })
             .catch(err => {

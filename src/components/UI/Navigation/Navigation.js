@@ -17,8 +17,7 @@ const style = {
         flexDirection: 'row',
         flexAlign: 'center',
         justifyContent: 'space-around'
-    }
-    
+    },
 }
 
 const navigation = () => {
@@ -26,16 +25,22 @@ const navigation = () => {
         <div style={style.root} className="terminal-nav">
             <nav className="terminal-menu">
                 <ul style={style.flexDiv}>
-                    <li>
+                    {/* <li>
                         <div className="terminal-logo">
                             <div className="logo terminal-prompt"></div>
                         </div>
+                    </li> */}
+                    <li>
+                        <a className="menu-item">New</a>
                     </li>
                     <li>
                         <a className="menu-item">History</a>
                     </li>
                     <li>
-                        <a className="menu-item">New</a>
+                        <a className="menu-item">Goals</a>
+                    </li>
+                    <li>
+                        <a className="menu-item">Modivation</a>
                     </li>
                 </ul>
             </nav>

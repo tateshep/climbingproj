@@ -66,6 +66,10 @@ class NewWorkout extends Component {
                             <label htmlFor="description">Description</label>
                             <textarea onChange={(event) => this.descriptionChangedHandler(event)} style={{width: '100%',height: '40vh'}} id="description" type="textarea" placeholder="test description" />
                         </div>
+                        <div className="form-group">
+                            <label htmlFor="warmup">Warm up</label>
+                            <textarea onChange={(event) => this.descriptionChangedHandler(event)} style={{width: '100%',height: '10vh'}} id="warmup" type="textarea" placeholder="test warm up" />
+                        </div>
 
                     </fieldset>
                 </form>

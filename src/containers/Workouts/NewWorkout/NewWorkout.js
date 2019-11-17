@@ -9,10 +9,7 @@ const style = {
     marginLeft: '5%',
     marginRight: '5%'
     },
-
-
 }
-
 
 class NewWorkout extends Component {
 
@@ -20,7 +17,6 @@ class NewWorkout extends Component {
         title: '',
         description: '',
         loading: false,
-        
     }
 
     submitHandler = () => {
@@ -29,11 +25,9 @@ class NewWorkout extends Component {
            description: this.state.description
         }
 
-
         console.log(workout);    
         axios.post('/workouts.json', workout)
         .then(response => {
-            // console.log(response);
             this.setState({loading:false});
         })
         .catch(error => {

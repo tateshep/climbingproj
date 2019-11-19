@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 
 import axios from '../../../axios-workouts';
 
+import classes from './NewWorkout.module.css';
+
 const style = {
     root: 
     {
-    marginTop: '20vh',
     marginLeft: '5%',
     marginRight: '5%'
     },
@@ -46,7 +47,7 @@ class NewWorkout extends Component {
 
     render () {
         return (
-            <div style={style.root}>
+            <div className={classes.root} style={style.root}>
                 <form>
                     <fieldset>
                         <legend>New Workout</legend>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
+import classes from './Navigation.module.css';
 const style = {
     root: 
     {
@@ -23,27 +23,50 @@ const style = {
 
 const navigation = () => {
     return (
-        <div style={style.root} className="terminal-nav">
-            <nav className="terminal-menu">
-                <ul style={style.flexDiv}>
-                    <li>
-                        <NavLink to="/" exact className="menu-item">New</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/history" className="menu-item">History</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/goals" className="menu-item">Goals</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/modivation" className="menu-item">Modivation</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/tools" className="menu-item">Tools</NavLink>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+        <>
+            <div style={style.root} className={`${classes.desktopOnly} terminal-nav`}>
+                <nav className="terminal-menu">
+                    <ul style={style.flexDiv}>
+                        <li>
+                            <NavLink to="/" exact className="menu-item">New</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/history" className="menu-item">History</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/goals" className="menu-item">Goals</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/modivation" className="menu-item">Modivation</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/tools" className="menu-item">Tools</NavLink>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div className={`${classes.mobileNav}`}>
+                <ul>
+                            <li>
+                                <NavLink to="/" exact className="menu-item">New</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/history" className="menu-item">History</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/goals" className="menu-item">Goals</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/modivation" className="menu-item">Modivation</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/tools" className="menu-item">Tools</NavLink>
+                            </li>
+                        </ul>
+                </div>
+
+        </>
     )
 };
 

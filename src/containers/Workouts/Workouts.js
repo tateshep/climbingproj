@@ -7,7 +7,7 @@ const style = {
         {
         padding: '10px 10px',
         width: '100%',
-        marginTop: '20vh',
+        paddingTop: '20vh',
         marginLeft: '5%',
         marginRight: '5%'
     },

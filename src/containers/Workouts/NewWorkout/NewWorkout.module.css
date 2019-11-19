@@ -1,0 +1,10 @@
+
+.root {
+    padding-top: 5vh;
+}
+
+@media (min-width: 900px) {
+    .root {
+        margin-top: 20vh;
+    }
+}

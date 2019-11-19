@@ -3,6 +3,11 @@
     padding-top: 5vh;
 }
 
+button {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
 @media (min-width: 900px) {
     .root {
         margin-top: 20vh;

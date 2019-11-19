@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 
 import axios from '../../../axios-workouts';
-
 import classes from './NewWorkout.module.css';
+import BaseFitness from './WorkoutForms/BaseFitness';
+import Strength from './WorkoutForms/Strength';
+import Power from './WorkoutForms/Power';
+import PowerEndurance from './WorkoutForms/PowerEndurance';
+import Endurance from './WorkoutForms/Endurance';
+import Performance from './WorkoutForms/Performance';
+
 
 const style = {
     root: 
@@ -14,10 +20,22 @@ const style = {
 
 class NewWorkout extends Component {
 
+    // going to leave this here instead of moving to redux
+    // because I sort of want it to stay local
     state = {
+        workoutType: 'Base Fitness',
         title: '',
         description: '',
         loading: false,
+    }
+    
+
+    submitTypeHandler = (event,) => {
+        let workoutType = event.target.value;
+        this.setState({workoutType: workoutType});
+
+
+
     }
 
     submitHandler = () => {
@@ -46,31 +64,49 @@ class NewWorkout extends Component {
     }
 
     render () {
+        const workoutForm = (workoutType) => {
+            switch(workoutType) {
+                case ('Base Fitness'):
+                    return (<BaseFitness workoutType={this.state.workoutType} />);
+                case ('Strength'):
+                        return (<Strength workoutType={this.state.workoutType} />);
+                case ('Power'):
+                    return (<Power workoutType={this.state.workoutType} />);
+                case ('Power Endurance'):
+                        return (<PowerEndurance workoutType={this.state.workoutType} />);
+                case ('Endurance'):
+                    return (<Endurance workoutType={this.state.workoutType} />);
+                case ('Performance'):
+                        return (<Performance workoutType={this.state.workoutType} />);
+                default:
+                    return (<BaseFitness workoutType={this.state.workoutType} />);
+    
+            }
+        }
         return (
             <div className={classes.root} style={style.root}>
+
                 <form>
                     <fieldset>
-                        <legend>New Workout</legend>
-
+                        <legend>Workout Type</legend>
                         <div className="form-group">
-                            <label htmlFor="title">Title</label>
-                            <input onChange={(event) => this.titleChangedHandler(event)} id="title" type="text" placeholder='title'/>
+                            <label htmlFor="select-type">Select Workout Type</label>
+                            <select style={{color:'white'}} onChange={(event) => this.submitTypeHandler(event)} id="select-type">
+                                <option  value="Base Fitness">Base Fitness</option>
+                                <option value="Strength">Strength</option>
+                                <option value="Power">Power</option>
+                                <option value="Power Endurance">Power Endurance</option>
+                                <option value="Endurance">Endurance</option>
+                                <option value="Performance">Performance</option>
+                            </select>
                         </div>
-                    
-                        <div className="form-group">
-                            <label htmlFor="description">Description</label>
-                            <textarea onChange={(event) => this.descriptionChangedHandler(event)} style={{width: '100%',height: '40vh'}} id="description" type="textarea" placeholder="test description" />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="warmup">Warm up</label>
-                            <textarea onChange={(event) => this.descriptionChangedHandler(event)} style={{width: '100%',height: '10vh'}} id="warmup" type="textarea" placeholder="test warm up" />
-                        </div>
-
                     </fieldset>
                 </form>
+                
+                { workoutForm(this.state.workoutType) }
+
                 <button onClick={this.submitHandler} className="btn btn-default" >Submit</button>
             </div>
-
         )
     }
 }

@@ -93,15 +93,12 @@ const navigation = (props) => {
 const mapStateToProps = (state) => {
     return {
         mobileNav : state.mobileNav,
-        mobileModal : state.mobileModal
     };
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         mobileNavToggle : () => dispatch({type: 'TOGGLE_MOBILE_NAV'}),
-        modalToggle : () => dispatch({type: 'TOGGLE_MODAL'})
-
     }
 }
 

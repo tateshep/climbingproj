@@ -10,11 +10,6 @@ const reducer = (state= initialState, action) => {
                 ...state,
                 mobileNav: !state.mobileNav
             }
-        case 'TOGGLE_MODAL':
-            return { 
-                ...state,
-                mobileModal: !state.mobileModal
-            }
     };
 
     return state;

@@ -1,6 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import { NavLink } from 'react-router-dom';
+import Modal from '../Modal/Modal';
 import classes from './Navigation.module.css';
+
 const style = {
     root: 
     {
@@ -21,7 +25,39 @@ const style = {
     },
 }
 
-const navigation = () => {
+const navigation = (props) => {
+
+    const mobileNav = null;
+
+    if (props.mobileNav) {
+        return (
+            <>
+                <Modal/>
+                <div className={`${classes.mobileNav}`}>
+                <button onClick={props.mobileNavToggle} className="btn btn-default" >Close</button>
+
+                    <ul>
+                        <li>
+                            <NavLink to="/" exact className="menu-item">New</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/history" className="menu-item">History</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/goals" className="menu-item">Goals</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/modivation" className="menu-item">Modivation</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/tools" className="menu-item">Tools</NavLink>
+                        </li>
+                    </ul>
+                </div>
+            </>
+        )
+    }
+
     return (
         <>
             <div style={style.root} className={`${classes.desktopOnly} terminal-nav`}>
@@ -44,30 +80,30 @@ const navigation = () => {
                         </li>
                     </ul>
                 </nav>
-            </div>
+            </div> 
 
-            <div className={`${classes.mobileNav}`}>
-                <ul>
-                            <li>
-                                <NavLink to="/" exact className="menu-item">New</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/history" className="menu-item">History</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/goals" className="menu-item">Goals</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/modivation" className="menu-item">Modivation</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/tools" className="menu-item">Tools</NavLink>
-                            </li>
-                        </ul>
-                </div>
+            <button onClick={props.mobileNavToggle} className="btn btn-default" >Nav</button>
+
+            { mobileNav }
 
         </>
     )
 };
 
-export default navigation;
+const mapStateToProps = (state) => {
+    return {
+        mobileNav : state.mobileNav,
+        mobileModal : state.mobileModal
+    };
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        mobileNavToggle : () => dispatch({type: 'TOGGLE_MOBILE_NAV'}),
+        modalToggle : () => dispatch({type: 'TOGGLE_MODAL'})
+
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(navigation);

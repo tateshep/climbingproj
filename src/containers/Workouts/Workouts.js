@@ -5,11 +5,7 @@ import axios from '../../axios-workouts';
 const style = {
     root: 
         {
-        padding: '10px 10px',
-        width: '100%',
-        paddingTop: '20vh',
-        marginLeft: '5%',
-        marginRight: '5%'
+
     },
 }
 

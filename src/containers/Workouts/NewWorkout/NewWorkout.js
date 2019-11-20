@@ -8,6 +8,7 @@ import Power from './WorkoutForms/Power';
 import PowerEndurance from './WorkoutForms/PowerEndurance';
 import Endurance from './WorkoutForms/Endurance';
 import Performance from './WorkoutForms/Performance';
+import Button from '@material-ui/core/Button';
 
 
 const style = {
@@ -105,7 +106,7 @@ class NewWorkout extends Component {
                 
                 { workoutForm(this.state.workoutType) }
 
-                <button onClick={this.submitHandler} className="btn btn-default" >Submit</button>
+                <Button variant="contained" color="primary" onClick={this.submitHandler} className="btn btn-default" >Submit</Button>
             </div>
         )
     }

@@ -68,7 +68,7 @@ class NewWorkout extends Component {
         const workoutForm = (workoutType) => {
             switch(workoutType) {
                 case ('Base Fitness'):
-                    return (<BaseFitness workoutType={this.state.workoutType} />);
+                    return (<BaseFitness titleChange={(event) => this.titleChangedHandler(event)} workoutType={this.state.workoutType} />);
                 case ('Strength'):
                         return (<Strength workoutType={this.state.workoutType} />);
                 case ('Power'):
@@ -92,8 +92,8 @@ class NewWorkout extends Component {
                         <legend>Workout Type</legend>
                         <div className="form-group">
                             <label htmlFor="select-type">Select Workout Type</label>
-                            <select style={{color:'white'}} onChange={(event) => this.submitTypeHandler(event)} id="select-type">
-                                <option  value="Base Fitness">Base Fitness</option>
+                            <select onChange={(event) => this.submitTypeHandler(event)} id="select-type">
+                                <option value="Base Fitness">Base Fitness</option>
                                 <option value="Strength">Strength</option>
                                 <option value="Power">Power</option>
                                 <option value="Power Endurance">Power Endurance</option>

@@ -17,7 +17,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Icon from '@material-ui/core/Icon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { NavLink } from 'react-router-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Workouts from '../../../containers/Workouts/Workouts';
 import NewWorkout from '../../../containers/Workouts/NewWorkout/NewWorkout';
 
@@ -82,6 +82,10 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+  navLink: {
+    textDecoration: 'none',
+    color: 'black'
+  }
 }));
 
 export default function MiniDrawer() {
@@ -144,7 +148,7 @@ export default function MiniDrawer() {
         </div>
         <Divider />
         <List>
-            <NavLink to="/" exact className="menu-item">
+            <NavLink to="/" exact className={classes.navLink}>
               <ListItem button>
                 <ListItemIcon><Icon>fitness_center</Icon></ListItemIcon>
                 <ListItemText>New
@@ -152,21 +156,21 @@ export default function MiniDrawer() {
               </ListItem>
             </NavLink>
 
-            <NavLink to="/history" className="menu-item">
+            <NavLink to="/history" className={classes.navLink}>
               <ListItem button>
                 <ListItemIcon><Icon>assignment</Icon></ListItemIcon>
                 <ListItemText>History</ListItemText>
               </ListItem>
             </NavLink>
 
-            <NavLink to="/goals" className="menu-item">
+            <NavLink to="/goals" className={classes.navLink}>
               <ListItem button>
                 <ListItemIcon><Icon>grade</Icon></ListItemIcon>
                 <ListItemText>Goals</ListItemText>
               </ListItem>
             </NavLink>
 
-            <NavLink to="/modivation" className="menu-item">
+            <NavLink to="/modivation" className={classes.navLink}>
               <ListItem button>
                   <ListItemIcon><Icon>sentiment_satisfied_alt</Icon></ListItemIcon>
                   <ListItemText>Modivation
@@ -174,7 +178,7 @@ export default function MiniDrawer() {
               </ListItem>
             </NavLink>
 
-            <NavLink to="/tools" className="menu-item">
+            <NavLink to="/tools" className={classes.navLink}>
               <ListItem button>
                   <ListItemIcon><Icon>network_check</Icon></ListItemIcon>
                   <ListItemText>Tools

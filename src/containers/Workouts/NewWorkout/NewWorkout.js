@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import axios from '../../../axios-workouts';
-import classes from './NewWorkout.module.css';
 import BaseFitness from './WorkoutForms/BaseFitness';
 import Strength from './WorkoutForms/Strength';
 import Power from './WorkoutForms/Power';
@@ -85,7 +84,7 @@ class NewWorkout extends Component {
             }
         }
         return (
-            <div className={classes.root} style={style.root}>
+            <div style={style.root}>
 
                 <form>
                     <fieldset>

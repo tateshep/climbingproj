@@ -19,7 +19,6 @@ const style = {
 }
 
 class NewWorkout extends Component {
-
     // going to leave this here instead of moving to redux
     // because I sort of want it to stay local
     state = {
@@ -28,14 +27,10 @@ class NewWorkout extends Component {
         description: '',
         loading: false,
     }
-    
 
     submitTypeHandler = (event,) => {
         let workoutType = event.target.value;
         this.setState({workoutType: workoutType});
-
-
-
     }
 
     submitHandler = () => {
@@ -80,7 +75,6 @@ class NewWorkout extends Component {
                         return (<Performance workoutType={this.state.workoutType} />);
                 default:
                     return (<BaseFitness workoutType={this.state.workoutType} />);
-    
             }
         }
         return (

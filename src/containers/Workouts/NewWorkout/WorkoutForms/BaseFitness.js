@@ -1,26 +1,37 @@
 import React from 'react';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
 
-const baseFitness = (props) => (
-    <form>
-        <fieldset>
-            <legend>New {props.workoutType} Workout</legend>
+const useStyles = makeStyles(theme => ({
+    container: {
+      display: 'flex',
+      flexWrap: 'wrap',
+    },
+    textField: {
+      marginRight: '10px',
+      color: 'white',
+      width: '300',
+    },
+  }));
 
-            <div className="form-group">
-                <label htmlFor="title">Title</label>
-                <input onChange={(event) => props.titleChange(event)} id="title" type="text" placeholder='title'/>
-            </div>
-        
-            <div className="form-group">
-                <label htmlFor="description">Description</label>
-                <textarea style={{width: '100%',height: '40vh'}} id="description" type="textarea" placeholder="test description" />
-            </div>
-            <div className="form-group">
-                <label htmlFor="warmup">Warm up</label>
-                <textarea style={{width: '100%',height: '10vh'}} id="warmup" type="textarea" placeholder="test warm up" />
-            </div>
 
-        </fieldset>
-    </form>
-)
+ 
+  export default function BaseFitness(props) {
+    const classes = useStyles();
 
-export default baseFitness;
+    return (
+        <>
+            <h3>New {props.workoutType} Workout</h3>
+            <form className={classes.container}>
+
+                
+                <div>
+                        <TextField className={classes.textField} style={{color: 'white'}} onChange={(event) => props.titleChange(event)} id="title" type="text" placeholder='title'/>
+                </div>
+                        <div><TextField className={classes.textField} id="description" type="textarea" placeholder="test description" /></div>
+                        <div><TextField className={classes.textField} multiline id="warmup" type="textarea" placeholder="test warm up" /></div>
+
+            </form>
+        </>
+    )
+  }

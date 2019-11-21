@@ -8,6 +8,11 @@ import PowerEndurance from './WorkoutForms/PowerEndurance';
 import Endurance from './WorkoutForms/Endurance';
 import Performance from './WorkoutForms/Performance';
 import Button from '@material-ui/core/Button';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 
 const style = {
@@ -36,7 +41,8 @@ class NewWorkout extends Component {
     submitHandler = () => {
         let workout = {
            title: this.state.title,
-           description: this.state.description
+           description: this.state.description,
+           workoutType: this.state.workoutType
         }
 
         console.log(workout);    
@@ -64,7 +70,7 @@ class NewWorkout extends Component {
                 case ('Base Fitness'):
                     return (<BaseFitness titleChange={(event) => this.titleChangedHandler(event)} workoutType={this.state.workoutType} />);
                 case ('Strength'):
-                        return (<Strength workoutType={this.state.workoutType} />);
+                        return (<Strength titleChange={(event) => this.titleChangedHandler(event)} workoutType={this.state.workoutType} workoutType={this.state.workoutType} />);
                 case ('Power'):
                     return (<Power workoutType={this.state.workoutType} />);
                 case ('Power Endurance'):
@@ -80,22 +86,23 @@ class NewWorkout extends Component {
         return (
             <div style={style.root}>
 
-                <form>
-                    <fieldset>
-                        <legend>Workout Type</legend>
-                        <div className="form-group">
-                            <label htmlFor="select-type">Select Workout Type</label>
-                            <select onChange={(event) => this.submitTypeHandler(event)} id="select-type">
-                                <option value="Base Fitness">Base Fitness</option>
-                                <option value="Strength">Strength</option>
-                                <option value="Power">Power</option>
-                                <option value="Power Endurance">Power Endurance</option>
-                                <option value="Endurance">Endurance</option>
-                                <option value="Performance">Performance</option>
-                            </select>
-                        </div>
-                    </fieldset>
-                </form>
+                <FormControl>
+                    <InputLabel id="workout-select">Workout Type</InputLabel>
+                    <Select
+                        labelId="workout-select"
+                        id="workout-select-id"
+                        value={this.state.workoutType}
+                        onChange={(event) => this.submitTypeHandler(event)} id="select-type"
+                        >
+                            <MenuItem value="Base Fitness">Base Fitness</MenuItem>
+                            <MenuItem value="Strength">Strength</MenuItem>
+                            <MenuItem value="Power">Power</MenuItem>
+                            <MenuItem value="Power Endurance">Power Endurance</MenuItem>
+                            <MenuItem value="Endurance">Endurance</MenuItem>
+                            <MenuItem value="Performance">Performance</MenuItem>
+                    </Select>
+                </FormControl>
+
                 
                 { workoutForm(this.state.workoutType) }
 

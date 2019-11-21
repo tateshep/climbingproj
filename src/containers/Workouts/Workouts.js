@@ -47,6 +47,7 @@ class Workouts extends Component {
                     key={workout.id}
                     title={workout.title}
                     description={workout.description}
+                    workoutType={workout.workoutType}
                     delete = {() => this.deleteWorkoutHandler(workout.id)}
                     />
             )

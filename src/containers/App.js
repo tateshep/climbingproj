@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Navigation from '../components/UI/Navigation/Navigation';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { createMuiTheme, ThemeProvider} from '@material-ui/core/styles'
 
 class App extends Component {

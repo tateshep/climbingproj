@@ -23,13 +23,10 @@ const useStyles = makeStyles(theme => ({
         <>
             <h3>New {props.workoutType} Workout</h3>
             <form className={classes.container}>
-
-                
-                <div>
-                        <TextField className={classes.textField} style={{color: 'white'}} onChange={(event) => props.titleChange(event)} id="title" type="text" placeholder='title'/>
-                </div>
-                        <div><TextField className={classes.textField} id="description" type="textarea" placeholder="test description" /></div>
-                        <div><TextField className={classes.textField} multiline id="warmup" type="textarea" placeholder="test warm up" /></div>
+              
+                <div><TextField className={classes.textField} onChange={(event) => props.titleChange(event)} id="title" type="text" placeholder='title'/></div>
+                <div><TextField className={classes.textField} multiline id="warmup" type="textarea" placeholder="test warm up" /></div>
+                <div><TextField className={classes.textField} id="description" type="textarea" placeholder="test description" /></div>
 
             </form>
         </>

@@ -103,7 +103,6 @@ class NewWorkout extends Component {
                     </Select>
                 </FormControl>
 
-                
                 { workoutForm(this.state.workoutType) }
 
                 <Button variant="contained" color="primary" onClick={this.submitHandler} className="btn btn-default" >Submit</Button>

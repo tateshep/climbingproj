@@ -10,24 +10,14 @@ import Performance from './WorkoutForms/Performance';
 import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-
-
-const style = {
-    root: 
-    {
-    marginLeft: '5%',
-    marginRight: '5%'
-    },
-}
 
 class NewWorkout extends Component {
     // going to leave this here instead of moving to redux
     // because I sort of want it to stay local
     state = {
-        workoutType: 'Base Fitness',
+        workoutType: 'Strength',
         title: '',
         description: '',
         loading: false,
@@ -84,13 +74,14 @@ class NewWorkout extends Component {
             }
         }
         return (
-            <div style={style.root}>
+            <div>
 
                 <FormControl>
                     <InputLabel id="workout-select">Workout Type</InputLabel>
                     <Select
                         labelId="workout-select"
                         id="workout-select-id"
+                        style={{width:'200px'}}
                         value={this.state.workoutType}
                         onChange={(event) => this.submitTypeHandler(event)} id="select-type"
                         >

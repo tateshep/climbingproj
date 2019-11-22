@@ -20,7 +20,9 @@ class NewWorkout extends Component {
         workoutType: 'Strength',
         title: '',
         description: '',
+        exercises: {},
         loading: false,
+        
     }
 
     submitTypeHandler = (event,) => {
@@ -32,7 +34,8 @@ class NewWorkout extends Component {
         let workout = {
            title: this.state.title,
            description: this.state.description,
-           workoutType: this.state.workoutType
+           workoutType: this.state.workoutType,
+           
         }
 
         console.log(workout);    

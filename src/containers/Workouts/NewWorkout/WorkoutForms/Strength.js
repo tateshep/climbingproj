@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
-
+import { connect } from 'react-redux';
 import Select from '@material-ui/core/Select';
 import { makeStyles } from '@material-ui/core/styles';
 import DateFnsUtils from '@date-io/date-fns';
@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
   }));
 
  
-  export default function Strength(props) {
+const Strength = (props) => {
     const classes = useStyles();
     const [selectedDate, setSelectedDate] = React.useState(new Date('2019-08-18T21:11:54'));
     const [selectSets, setSelectSets] = React.useState(1);
@@ -113,7 +113,7 @@ const useStyles = makeStyles(theme => ({
                 }}
                 />
                 </MuiPickersUtilsProvider>
-                <div><TextField className={classes.textField} onChange={(event) => props.titleChange(event)} id="title" type="text" placeholder='title'/></div>
+                <div><TextField className={classes.textField} onChange={(event) => props.titleChange(event)} id="title" type="text" placeholder='title' value={props.title}/></div>
                 <div><TextField className={classes.textField} multiline id="warmup" type="textarea" placeholder="describe warm up" /></div>
                 <div><TextField className={classes.textField} multiline id="comments" type="textarea" placeholder="comments" /></div>
                 <h4>Hangboard Exercises</h4>
@@ -125,3 +125,19 @@ const useStyles = makeStyles(theme => ({
         </>
     )
   }
+
+  const mapStateToProps = (state) => {
+    return {
+        title: state.title,
+        description: state.description,
+        exercises: state.exercises,
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        titleChange: (event) => dispatch({type: 'UPDATE_TITLE', value: event.target.value})
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Strength);

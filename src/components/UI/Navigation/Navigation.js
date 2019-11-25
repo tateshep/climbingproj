@@ -20,6 +20,7 @@ import { NavLink } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import Workouts from '../../../containers/Workouts/Workouts';
 import NewWorkout from '../../../containers/Workouts/NewWorkout/NewWorkout';
+import CheckState from './CheckState';
 
 const drawerWidth = 240;
 
@@ -190,8 +191,10 @@ export default function MiniDrawer() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
+        <CheckState />
           <Route path="/history" component={Workouts} />
           <Route path="/" exact component={NewWorkout} />
+
       </main>
     </div>
   );

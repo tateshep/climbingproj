@@ -12,68 +12,62 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import { connect } from 'react-redux';
 
 class NewWorkout extends Component {
     // going to leave this here instead of moving to redux
     // because I sort of want it to stay local
-    state = {
-        workoutType: 'Strength',
-        title: '',
-        description: '',
-        exercises: {},
-        loading: false,
-        
-    }
 
-    submitTypeHandler = (event,) => {
-        let workoutType = event.target.value;
-        this.setState({workoutType: workoutType});
-    }
 
-    submitHandler = () => {
-        let workout = {
-           title: this.state.title,
-           description: this.state.description,
-           workoutType: this.state.workoutType,
+    // submitTypeHandler = (event,) => {
+    //     let workoutType = event.target.value;
+    //     this.setState({workoutType: workoutType});
+    // }
+
+    // submitHandler = () => {
+        // let workout = {
+        //    title: this.props.title,
+        //    description: this.props.description,
+        //    workoutType: this.props.workoutType,
            
-        }
+        // }
 
-        console.log(workout);    
-        axios.post('/workouts.json', workout)
-        .then(response => {
-            this.setState({loading:false});
-        })
-        .catch(error => {
-            this.setState({loading:false});
-            console.log(error)});
-    }
+        // console.log(workout);    
+        // axios.post('/workouts.json', workout)
+        // .then(response => {
+        //     this.setState({loading:false});
+        // })
+        // .catch(error => {
+        //     this.setState({loading:false});
+        //     console.log(error)});
+    // }
 
-    titleChangedHandler = (event) => {
-        let newTitle = event.target.value
-        this.setState({title: newTitle})
-    }
-    descriptionChangedHandler = (event) => {
-        let newDescription = event.target.value
-        this.setState({description: newDescription})
-    }
+    // titleChangedHandler = (event) => {
+        // let newTitle = event.target.value
+        // this.setState({title: newTitle})
+    // }
+    // descriptionChangedHandler = (event) => {
+    //     let newDescription = event.target.value
+    //     this.setState({description: newDescription})
+    // }
 
     render () {
         const workoutForm = (workoutType) => {
             switch(workoutType) {
                 case ('Base Fitness'):
-                    return (<BaseFitness titleChange={(event) => this.titleChangedHandler(event)} workoutType={this.state.workoutType} />);
+                    return (<BaseFitness />);
                 case ('Strength'):
-                        return (<Strength titleChange={(event) => this.titleChangedHandler(event)} workoutType={this.state.workoutType} workoutType={this.state.workoutType} />);
+                        return (<Strength titleChange={(event) => this.titleChangedHandler(event)} workoutType={this.props.workoutType} workoutType={this.props.workoutType} />);
                 case ('Power'):
-                    return (<Power workoutType={this.state.workoutType} />);
+                    return (<Power workoutType={this.props.workoutType} />);
                 case ('Power Endurance'):
-                        return (<PowerEndurance workoutType={this.state.workoutType} />);
+                        return (<PowerEndurance workoutType={this.props.workoutType} />);
                 case ('Endurance'):
-                    return (<Endurance workoutType={this.state.workoutType} />);
+                    return (<Endurance workoutType={this.props.workoutType} />);
                 case ('Performance'):
-                        return (<Performance workoutType={this.state.workoutType} />);
+                        return (<Performance workoutType={this.props.workoutType} />);
                 default:
-                    return (<BaseFitness workoutType={this.state.workoutType} />);
+                    return (<BaseFitness workoutType={this.props.workoutType} />);
             }
         }
         return (
@@ -85,8 +79,8 @@ class NewWorkout extends Component {
                         labelId="workout-select"
                         id="workout-select-id"
                         style={{width:'200px'}}
-                        value={this.state.workoutType}
-                        onChange={(event) => this.submitTypeHandler(event)} id="select-type"
+                        value={this.props.workoutType}
+                        onChange={(event) => this.props.updateWorkoutType(event)} id="select-type"
                         >
                             <MenuItem value="Base Fitness">Base Fitness</MenuItem>
                             <MenuItem value="Strength">Strength</MenuItem>
@@ -97,7 +91,7 @@ class NewWorkout extends Component {
                     </Select>
                 </FormControl>
 
-                { workoutForm(this.state.workoutType) }
+                { workoutForm(this.props.workoutType) }
 
                 <Button variant="contained" color="primary" onClick={this.submitHandler} className="btn btn-default" >Submit</Button>
             </div>
@@ -105,4 +99,20 @@ class NewWorkout extends Component {
     }
 }
 
-export default NewWorkout;
+const mapStateToProps = (state) => {
+    return {
+        workoutType: state.workoutType,
+        title: state.title,
+        description: state.description,
+        exercises: state.exercises,
+        loading: state.loading       
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        updateWorkoutType: (event) => dispatch({type: 'UPDATE_WORKOUTTYPE', value: event.target.value })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewWorkout);

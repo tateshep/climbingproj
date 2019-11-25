@@ -3,7 +3,8 @@ const initialState = {
     mobileModal: false,
     workoutType: 'Strength',
     title: '',
-    description: '',
+    comments: '',
+    warmup: '',
     exercises: {},
     loading: false,
 }
@@ -28,6 +29,16 @@ const reducer = (state= initialState, action) => {
             return {
                 ...state,
                 title: action.value
+            }
+        case 'UPDATE_WARMUP':
+            return {
+                ...state,
+                warmup: action.value
+            }
+        case 'UPDATE_COMMENTS':
+            return {
+                ...state,
+                comments: action.value
             }
     };
     return state;

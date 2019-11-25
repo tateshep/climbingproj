@@ -49,7 +49,7 @@ const Strength = (props) => {
     for (let i=1; i <= 10 ; i++ ) {
         hbExercisesArray.push(
             <div key={`SE-${i}`}>
-                    <p>HB Exercise {i}: 
+                    <div>HB Exercise {i}: 
                         <InputLabel style={{display:"inline", margin: '10px'}} id={`set-select-${i}`} >Sets</InputLabel>
                             <Select value={selectSets} onChange={(event) => selectChangeHandler(event)} labelId={`set-select-${i}`}>
                                 <MenuItem value="0">0</MenuItem>
@@ -57,7 +57,7 @@ const Strength = (props) => {
                                 <MenuItem value="2">2</MenuItem>
                                 <MenuItem value="3">3</MenuItem>
                             </Select>
-                    </p>
+                    </div>
 
                     <TextField className={classes.exercise} multiline id="" type="textarea" label="Hold Description" />
                     <TextField className={classes.exercise} id="" type="textarea" label="Comments" />
@@ -67,7 +67,7 @@ const Strength = (props) => {
     for (let i=1; i <= 6 ; i++ ) {
         sExercisesArray.push(
             <div key={`SE-${i}`}>
-                    <p>SE {i}: 
+                    <div>SE {i}: 
                          
                         <InputLabel style={{display:"inline", margin: '10px'}} id={`set-select-${i}`} >Sets</InputLabel>
                             <Select value={selectSets} onChange={(event) => selectChangeHandler(event)} labelId={`set-select-${i}`}>
@@ -76,7 +76,7 @@ const Strength = (props) => {
                                 <MenuItem value="2">2</MenuItem>
                                 <MenuItem value="3">3</MenuItem>
                             </Select>
-                     </p>
+                     </div>
                     <TextField className={classes.exercise} multiline id="" type="textarea" label="Exercise Description" />
                     <TextField className={classes.exercise} id="" type="textarea" label="Comments" />
                 </div>
@@ -116,8 +116,8 @@ const Strength = (props) => {
                 />
                 </MuiPickersUtilsProvider>
                 <div><TextField className={classes.textField} onChange={(event) => props.titleChange(event)} id="title" type="text" label='Title' value={props.title}/></div>
-                <div><TextField className={classes.textField} multiline id="warmup" type="textarea" label="Describe Warm Up" /></div>
-                <div><TextField className={classes.textField} multiline id="comments" type="textarea" label="Comments" /></div>
+                <div><TextField className={classes.textField} multiline onChange={(event) => props.warmupChange(event)} id="title" type="text" label='Title' value={props.warmup} id="warmup" type="textarea" label="Describe Warm Up" /></div>
+                <div><TextField className={classes.textField} multiline onChange={(event) => props.commentsChange(event)} id="comments" type="textarea" label="Comments" /></div>
                 <h4>Hangboard Exercises</h4>
                 { hbExercisesArray }
 
@@ -131,14 +131,17 @@ const Strength = (props) => {
   const mapStateToProps = (state) => {
     return {
         title: state.title,
-        description: state.description,
+        comments: state.comments,
         exercises: state.exercises,
+        warmup: state.warmup
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        titleChange: (event) => dispatch({type: 'UPDATE_TITLE', value: event.target.value})
+        titleChange: (event) => dispatch({type: 'UPDATE_TITLE', value: event.target.value}),
+        warmupChange: (event) => dispatch({type: 'UPDATE_WARMUP', value: event.target.value}),
+        commentsChange: (event) => dispatch({type: 'UPDATE_COMMENTS', value: event.target.value}),
     }
 }
 

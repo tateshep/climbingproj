@@ -27,7 +27,7 @@ class NewWorkout extends Component {
     submitHandler = () => {
         let workout = {
            title: this.props.title,
-           description: this.props.description,
+           comments: this.props.comments,
            workoutType: this.props.workoutType,
         }
 
@@ -41,10 +41,6 @@ class NewWorkout extends Component {
             console.log(error)});
     }
 
-    // titleChangedHandler = (event) => {
-        // let newTitle = event.target.value
-        // this.setState({title: newTitle})
-    // }
     // descriptionChangedHandler = (event) => {
     //     let newDescription = event.target.value
     //     this.setState({description: newDescription})
@@ -102,7 +98,7 @@ const mapStateToProps = (state) => {
     return {
         workoutType: state.workoutType,
         title: state.title,
-        description: state.description,
+        comments: state.comments,
         exercises: state.exercises,
         loading: state.loading       
     }

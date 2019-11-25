@@ -13,7 +13,8 @@ const mapStateToProps = (state) => {
         title: state.title,
         description: state.description,
         exercises: state.exercises,
-        loading: state.loading       
+        loading: state.loading,
+        warmup: state.warmup       
     }
 }
 

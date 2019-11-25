@@ -24,23 +24,22 @@ class NewWorkout extends Component {
     //     this.setState({workoutType: workoutType});
     // }
 
-    // submitHandler = () => {
-        // let workout = {
-        //    title: this.props.title,
-        //    description: this.props.description,
-        //    workoutType: this.props.workoutType,
-           
-        // }
+    submitHandler = () => {
+        let workout = {
+           title: this.props.title,
+           description: this.props.description,
+           workoutType: this.props.workoutType,
+        }
 
-        // console.log(workout);    
-        // axios.post('/workouts.json', workout)
-        // .then(response => {
-        //     this.setState({loading:false});
-        // })
-        // .catch(error => {
-        //     this.setState({loading:false});
-        //     console.log(error)});
-    // }
+        console.log(workout);    
+        axios.post('/workouts.json', workout)
+        .then(response => {
+            this.setState({loading:false});
+        })
+        .catch(error => {
+            this.setState({loading:false});
+            console.log(error)});
+    }
 
     // titleChangedHandler = (event) => {
         // let newTitle = event.target.value

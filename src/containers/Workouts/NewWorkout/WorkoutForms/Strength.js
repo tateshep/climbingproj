@@ -18,15 +18,15 @@ const useStyles = makeStyles(theme => ({
       flexDirection: 'column'
     },
     textField: {
-      margin: '10px',
+      margin: '20px',
       marginLeft: '0px',
       color: 'white',
-      width: '300px',
+      width: '90%',
     },
     exercise: {
-        margin: '10px',
+        margin: '20px',
         color: 'white',
-        width: '150px',
+        width: '90%',
       },
   }));
 
@@ -49,34 +49,36 @@ const Strength = (props) => {
     for (let i=1; i <= 10 ; i++ ) {
         hbExercisesArray.push(
             <div key={`SE-${i}`}>
-                    <p>HB Exercise {i}: </p>
-                    <TextField className={classes.exercise} multiline id="" type="textarea" placeholder="Hold Description" />
+                    <p>HB Exercise {i}: 
+                        <InputLabel style={{display:"inline", margin: '10px'}} id={`set-select-${i}`} >Sets</InputLabel>
+                            <Select value={selectSets} onChange={(event) => selectChangeHandler(event)} labelId={`set-select-${i}`}>
+                                <MenuItem value="0">0</MenuItem>
+                                <MenuItem value="1">1</MenuItem>
+                                <MenuItem value="2">2</MenuItem>
+                                <MenuItem value="3">3</MenuItem>
+                            </Select>
+                    </p>
 
-                    <InputLabel style={{display:"inherit", margin: '10px'}} id={`set-select-${i}`} >Sets</InputLabel>
-                    <Select value={selectSets} onChange={(event) => selectChangeHandler(event)} labelId={`set-select-${i}`}>
-                        <MenuItem value="0">0</MenuItem>
-                        <MenuItem value="1">1</MenuItem>
-                        <MenuItem value="2">2</MenuItem>
-                        <MenuItem value="3">3</MenuItem>
-                    </Select>
-                    <TextField className={classes.exercise} id="" type="textarea" placeholder="Comments" />
+                    <TextField className={classes.exercise} multiline id="" type="textarea" label="Hold Description" />
+                    <TextField className={classes.exercise} id="" type="textarea" label="Comments" />
                 </div>
         )
     };
     for (let i=1; i <= 6 ; i++ ) {
         sExercisesArray.push(
             <div key={`SE-${i}`}>
-                    <p>Strength Exercise {i}: </p>
-                    <TextField className={classes.exercise} multiline id="" type="textarea" placeholder="Exercise Description" />
-
-                    <InputLabel style={{display:"inherit", margin: '10px'}} id={`set-select-${i}`} >Sets</InputLabel>
-                    <Select value={selectSets} onChange={(event) => selectChangeHandler(event)} labelId={`set-select-${i}`}>
-                        <MenuItem value="0">0</MenuItem>
-                        <MenuItem value="1">1</MenuItem>
-                        <MenuItem value="2">2</MenuItem>
-                        <MenuItem value="3">3</MenuItem>
-                    </Select>
-                    <TextField className={classes.exercise} id="" type="textarea" placeholder="Comments" />
+                    <p>SE {i}: 
+                         
+                        <InputLabel style={{display:"inline", margin: '10px'}} id={`set-select-${i}`} >Sets</InputLabel>
+                            <Select value={selectSets} onChange={(event) => selectChangeHandler(event)} labelId={`set-select-${i}`}>
+                                <MenuItem value="0">0</MenuItem>
+                                <MenuItem value="1">1</MenuItem>
+                                <MenuItem value="2">2</MenuItem>
+                                <MenuItem value="3">3</MenuItem>
+                            </Select>
+                     </p>
+                    <TextField className={classes.exercise} multiline id="" type="textarea" label="Exercise Description" />
+                    <TextField className={classes.exercise} id="" type="textarea" label="Comments" />
                 </div>
         )
     };
@@ -113,9 +115,9 @@ const Strength = (props) => {
                 }}
                 />
                 </MuiPickersUtilsProvider>
-                <div><TextField className={classes.textField} onChange={(event) => props.titleChange(event)} id="title" type="text" placeholder='title' value={props.title}/></div>
-                <div><TextField className={classes.textField} multiline id="warmup" type="textarea" placeholder="describe warm up" /></div>
-                <div><TextField className={classes.textField} multiline id="comments" type="textarea" placeholder="comments" /></div>
+                <div><TextField className={classes.textField} onChange={(event) => props.titleChange(event)} id="title" type="text" label='Title' value={props.title}/></div>
+                <div><TextField className={classes.textField} multiline id="warmup" type="textarea" label="Describe Warm Up" /></div>
+                <div><TextField className={classes.textField} multiline id="comments" type="textarea" label="Comments" /></div>
                 <h4>Hangboard Exercises</h4>
                 { hbExercisesArray }
 

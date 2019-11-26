@@ -10,13 +10,11 @@ class Modivation extends Component {
     }
 
     componentDidMount() {
-        console.log('modivation');
         axios.get('/qod.json?category=inspire')
             .then(res=> {
                 console.log(res.data.contents.quotes[0]);
                 this.setState({fetchedQuote: res.data.contents.quotes[0].quote, fetchedAuthor:res.data.contents.quotes[0].author})
             })
-
     }
     
     render() {

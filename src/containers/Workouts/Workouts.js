@@ -36,6 +36,7 @@ class Workouts extends Component {
         axios.delete('/workouts/' + id + '.json')
             .then(res => {
                 console.log(res);
+                this.props.history.push('/history');
             })
         console.log('delete :' + id);
     } 

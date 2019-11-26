@@ -21,7 +21,7 @@ import { Route } from 'react-router-dom';
 import Workouts from '../../../containers/Workouts/Workouts';
 import NewWorkout from '../../../containers/Workouts/NewWorkout/NewWorkout';
 import CheckState from './CheckState';
-
+import Modivation from '../../../containers/Modivation/Modivation';
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -193,6 +193,7 @@ export default function MiniDrawer() {
         <div className={classes.toolbar} />
         <CheckState />
           <Route path="/history" component={Workouts} />
+          <Route path="/modivation" component={Modivation} />
           <Route path="/" exact component={NewWorkout} />
 
       </main>

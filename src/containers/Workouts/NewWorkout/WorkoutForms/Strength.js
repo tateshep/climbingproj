@@ -50,13 +50,7 @@ const Strength = (props) => {
         hbExercisesArray.push(
             <div key={`SE-${i}`}>
                     <div>HB Exercise {i}: 
-                        <InputLabel style={{display:"inline", margin: '10px'}} id={`set-select-${i}`} >Sets</InputLabel>
-                            <Select value={selectSets} onChange={(event) => selectChangeHandler(event)} labelId={`set-select-${i}`}>
-                                <MenuItem value="0">0</MenuItem>
-                                <MenuItem value="1">1</MenuItem>
-                                <MenuItem value="2">2</MenuItem>
-                                <MenuItem value="3">3</MenuItem>
-                            </Select>
+
                     </div>
 
                     <TextField className={classes.exercise} multiline id="" type="textarea" label="Hold Description" />
@@ -68,14 +62,6 @@ const Strength = (props) => {
         sExercisesArray.push(
             <div key={`SE-${i}`}>
                     <div>SE {i}: 
-                         
-                        <InputLabel style={{display:"inline", margin: '10px'}} id={`set-select-${i}`} >Sets</InputLabel>
-                            <Select value={selectSets} onChange={(event) => selectChangeHandler(event)} labelId={`set-select-${i}`}>
-                                <MenuItem value="0">0</MenuItem>
-                                <MenuItem value="1">1</MenuItem>
-                                <MenuItem value="2">2</MenuItem>
-                                <MenuItem value="3">3</MenuItem>
-                            </Select>
                      </div>
                     <TextField className={classes.exercise} multiline id="" type="textarea" label="Exercise Description" />
                     <TextField className={classes.exercise} id="" type="textarea" label="Comments" />
@@ -118,7 +104,17 @@ const Strength = (props) => {
                 <div><TextField className={classes.textField} onChange={(event) => props.titleChange(event)} id="title" type="text" label='Title' value={props.title}/></div>
                 <div><TextField className={classes.textField} multiline onChange={(event) => props.warmupChange(event)} id="title" type="text" label='Title' value={props.warmup} id="warmup" type="textarea" label="Describe Warm Up" /></div>
                 <div><TextField className={classes.textField} multiline onChange={(event) => props.commentsChange(event)} id="comments" type="textarea" label="Comments" /></div>
+                <div>
                 <h4>Hangboard Exercises</h4>
+                    <InputLabel style={{display:"inline", margin: '150px'}} id={`set-select-1`} >Sets</InputLabel>
+                    <Select value={selectSets} onChange={(event) => selectChangeHandler(event)} labelId={`set-select-1`}>
+                        <MenuItem value="0">0</MenuItem>
+                        <MenuItem value="1">1</MenuItem>
+                        <MenuItem value="2">2</MenuItem>
+                        <MenuItem value="3">3</MenuItem>
+                </Select>
+                </div>
+              
                 { hbExercisesArray }
 
                 <h4>Supplemental Strength Exercises</h4>

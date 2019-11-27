@@ -1,11 +1,11 @@
 const initialState = {
     mobileNav: false,
     mobileModal: false,
-    workoutType: 'Strength',
     title: '',
     comments: '',
     warmup: '',
-    exercises: {},
+    workoutType: 'Strength',
+    exercises: ['hello'],
     loading: false,
 }
 
@@ -40,6 +40,16 @@ const reducer = (state= initialState, action) => {
                 ...state,
                 comments: action.value
             }
+        case 'ADD_HBEXERCISE':
+
+            const newState = state;
+            newState.exercises.push(action.value);
+
+            return {
+                ...state,
+                exercises: newState.exercises
+            }
+
     };
     return state;
 }

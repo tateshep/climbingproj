@@ -88,7 +88,7 @@ class NewWorkout extends Component {
 
 
                 { workoutForm(this.props.workoutType) }
-                <p>{ this.props.exercises[0] }</p>
+ 
 
                 <Button style={{marginTop:'30px'}} variant="contained" color="primary" onClick={this.submitHandler} >Submit Workout</Button>
             </div>

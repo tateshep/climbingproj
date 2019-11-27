@@ -10,10 +10,8 @@ class HbExercise extends Component {
     state = {
         selectSets: '1',
         description: '',
-        comments: ''
+        comments: '',
     }
-
-    // [selectSets, setSelectSets] = React.useState(1);
 
     selectChangeHandler = num => {
         this.setState({selectSets:num.target.value});
@@ -33,6 +31,8 @@ class HbExercise extends Component {
         console.log('');
     }
     
+
+
     render () {
 
         return (
@@ -51,6 +51,9 @@ class HbExercise extends Component {
                 <TextField onChange={(event) => this.descriptionChangedHandler(event)} multiline id="" type="textarea" label="Hold Description" />
                 <TextField onChange={(event) => this.commentsChangedHandler(event)} multiline id="" type="textarea" label="Comments" />
                 <Button onClick={() => this.props.addExercise(this.state)}  variant="contained" color="primary">Add</Button>
+
+ 
+
             </div>
         )
     }
